@@ -9,7 +9,7 @@
     "dbtype": "mysql",
     "dbwhere": "localhost",
     "dbuser": "root",
-    "dbpass": "",
+    "dbpass": "root",
     "branch": "7.x-5.x"
   },
   "sites": {
