@@ -1,4 +1,7 @@
 {
+  "system": {
+    "mysql": "/usr/bin/mysql"
+  },
   "build": {
     "webserver_root": "/var/www/",
     "environment": "development",
