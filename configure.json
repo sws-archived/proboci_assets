@@ -4,8 +4,8 @@
   },
   "build": {
     "webserver_root": "/var/www/",
-    "environment": "local",
-    "type": "production",
+    "environment": "development",
+    "type": "development",
     "dbtype": "mysql",
     "dbwhere": "localhost",
     "dbuser": "root",
