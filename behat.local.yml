@@ -1,0 +1,42 @@
+## Local development settings:
+local:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://html
+      browser_name: googlechrome
+      selenium2:
+        browser: chrome
+    Drupal\DrupalExtension:
+      drush:
+        alias: dev.html
+
+## Formatters
+# default:
+#   extensions:
+#     emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+#       name: html
+#       renderer: Twig,Behat2
+#       file_name: index
+#       print_args: true
+#       print_outp: true
+#       loop_break: true
+#   formatters:
+#     html:
+#       output_path: %paths.base%
+#     pretty: true
+
+## Use firefox
+# default:
+#   extensions:
+#     Behat\MinkExtension:
+#       browser_name: firefox
+#       selenium2:
+#         browser: firefox
+
+## Use chrome
+# default:
+#   extensions:
+#     Behat\MinkExtension:
+#       browser_name: googlechrome
+#       selenium2:
+#         browser: chrome

@@ -1,2 +1,2 @@
 # proboci_assets
-This repository is used to store proboci_assets used by all repositories with .probo.yml.
+This repository is used to store proboci_assets excluding passwords and access tokens.
