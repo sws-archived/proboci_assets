@@ -3,7 +3,7 @@
     "mysql": "/usr/bin/mysql"
   },
   "build": {
-    "webserver_root": "/var/www/html",
+    "webserver_root": "/var/www/html/",
     "environment": "development",
     "type": "development",
     "dbtype": "mysql",
