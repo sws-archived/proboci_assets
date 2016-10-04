@@ -3,7 +3,7 @@
     "webserver_root": "/var/www/",
     "environment": "local",
     "dbtype": "mysql",
-    "dbwhere": "127.0.0.1",
+    "dbwhere": "localhost",
     "dbuser": "root",
     "dspass": "root",
     "branch": "7.x-5.x"
