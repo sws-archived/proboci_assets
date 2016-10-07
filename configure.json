@@ -1,11 +1,10 @@
 {
   "system": {
     "mysql": "/usr/bin/mysql",
-    "drush": "/root/.composer/vendor/bin/drush"
+    "drush": "/srv/stanford_geppetto/drush"
   },
   "build": {
     "webserver_root": "/var/www/",
-    "environment": "development",
     "type": "development",
     "dbtype": "mysql",
     "dbwhere": "localhost",
