@@ -1,6 +1,7 @@
 {
   "system": {
-    "mysql": "/usr/bin/mysql"
+    "mysql": "/usr/bin/mysql",
+    "drush": "/root/.composer/vendor/bin/drush"
   },
   "build": {
     "webserver_root": "/var/www/",
