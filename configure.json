@@ -1,7 +1,7 @@
 {
   "system": {
     "mysql": "/usr/bin/mysql",
-    "drush": "./drush/drush"
+    "drush": "/srv/stanford_geppetto/drush/drush"
   },
   "build": {
     "webserver_root": "/var/www/",
