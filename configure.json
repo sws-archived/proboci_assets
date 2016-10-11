@@ -7,9 +7,9 @@
     "webserver_root": "/var/www/",
     "type": "development",
     "dbtype": "mysql",
-    "dbwhere": "localhost",
-    "dbuser": "root",
-    "dbpass": "root",
+    "dbwhere": localhost,
+    "dbuser": root,
+    "dbpass": root,
     "branch": "proboci"
   },
   "sites": {
