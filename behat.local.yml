@@ -1,5 +1,5 @@
 ## Local development settings:
-local:
+default:
   extensions:
     Behat\MinkExtension:
       base_url: http://html
