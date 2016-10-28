@@ -4,6 +4,7 @@ This repository is used to store Probo CI assets, excluding passwords and access
 We should discuss on Friday whether we want to put more of the .probo.yaml content in this repository.  In other words, the file we add to each repository simply clones this repository and echoes a .probo.yaml file.  The advantage of this strategy would be that we could make improvements to the script, in one place, instead of across multiple repositories.
 
 The contents of this repository are:
+
 **.htaccess:** This is a copy of Drupal's 7.50 .htaccess file with RewriteBase / uncommented.
 
 **.my.cnf:** This dramatically increases the capcity of MySQL.  The default settings used by Probo CI repeatedly failed to complete a product build.
