@@ -8,7 +8,7 @@ default:
         browser: chrome
     Drupal\DrupalExtension:
       drush:
-        alias: dev.html
+        alias: probo.html
 
 ## Formatters
 # default:
