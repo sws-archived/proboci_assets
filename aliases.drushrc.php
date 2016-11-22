@@ -17,11 +17,11 @@ foreach ($command as $arg){
   $first = array_shift($test);
 
   switch($first) {
-    case "@dev":
+    case "@probo":
       // Set the project to be whatever the alias was
       $project_alias = str_replace('@', '', $arg);
       $project_name = array_pop($test);
-      $root = '/var/www/'. $project_name;
+      $root = '/var/www/html'
       break;
   }
 }
