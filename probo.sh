@@ -9,9 +9,9 @@ test_deployer_product='jumpstart-academic'
 test_feature=$(cd /src | echo *.info | cut -f1 -d".")
 
 # Configure keys and MySQL
-cp $ASSETS_DIR/proboci_id_rsa /root/.ssh/id_rsa
+cp $ASSET_DIR/proboci_id_rsa /root/.ssh/id_rsa
 chmod 400 /root/.ssh/id_rsa
-cp $ASSETS_DIR/proboci_id_rsa.pub /root/.ssh/id_rsa.pub
+cp $ASSET_DIR/proboci_id_rsa.pub /root/.ssh/id_rsa.pub
 
 # Would love to see if I can get rid of this section
 service mysql start
