@@ -6,7 +6,8 @@
 
 # Set feature and product specific variables
 test_deployer_product='jumpstart-academic'
-test_feature=$(cd /src | echo *.info | cut -f1 -d".")
+cd /src
+test_feature=$(ls *.info | cut -f1 -d".")
 
 # Configure keys
 chmod 400 /root/.ssh/id_rsa
@@ -21,13 +22,6 @@ mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')";
 mysql -u root -proot -e "CREATE DATABASE html";
 cp /srv/proboci_assets/.my.cnf /root/.my.cnf
 
-# Installing drush 8
-# sudo mkdir --parents /opt/drush-8.x
-# cd /opt/drush-8.x
-# sudo composer init --require=drush/drush:8.* -n
-# sudo composer config bin-dir /usr/local/bin
-# sudo composer install &>/dev/null &
-
 # Installing node modules
 npm install -g npm >/dev/null
 npm install -g selenium-standalone chromedriver >/dev/null
@@ -37,7 +31,6 @@ selenium-standalone install --silent
 git clone https://github.com/SU-SWS/linky_clicky.git /srv/linky_clicky
 cd /srv/linky_clicky
 composer install &>/dev/null &
-git checkout proboci
 cp /srv/proboci_assets/aliases.drushrc.php /root/.drush/aliases.drushrc.php
 cp /srv/proboci_assets/behat.yml /srv/linky_clicky/sites/probo/behat.yml
 cp /srv/proboci_assets/behat.local.yml /srv/linky_clicky/sites/probo/behat.local.yml
@@ -46,7 +39,9 @@ git clone https://github.com/kbrownell/run_behats.git /srv/linky_clicky/run_beha
 cd /srv/linky_clicky/run_behats
 git checkout proboci
 chmod +x run_behats.sh
+echo "/srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature"
 cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature /srv/linky_clicky/sites/probo/features/.
+ls /srv/linky_clicky/sites/probo/features
 
 # Downloading and running Jumpstart Deployer
 git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer

@@ -8,7 +8,7 @@ imports:
 default:
   extensions:
     Behat\MinkExtension:
-      base_url: http://html 
+      base_url: http://html
     Drupal\DrupalExtension:
       drush:
         alias: probo.html
