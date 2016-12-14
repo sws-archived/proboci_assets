@@ -34,14 +34,7 @@ composer install &>/dev/null &
 cp /srv/proboci_assets/aliases.drushrc.php /root/.drush/aliases.drushrc.php
 cp /srv/proboci_assets/behat.yml /srv/linky_clicky/sites/probo/behat.yml
 cp /srv/proboci_assets/behat.local.yml /srv/linky_clicky/sites/probo/behat.local.yml
-mkdir /srv/linky_clicky/run_behats
-git clone https://github.com/kbrownell/run_behats.git /srv/linky_clicky/run_behats
-cd /srv/linky_clicky/run_behats
-git checkout proboci
-chmod +x run_behats.sh
-echo "/srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature"
 cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature /srv/linky_clicky/sites/probo/features/.
-ls /srv/linky_clicky/sites/probo/features
 
 # Downloading and running Jumpstart Deployer
 git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer
@@ -64,4 +57,5 @@ drush si $test_product_profile --account-name=admin --db-url="mysql://root:root@
 echo "127.0.0.1 html" >> /etc/hosts
 export SHELL=/bin/sh
 xvfb-run --server-args="-screen 0, 1366x768x24" selenium-standalone start > xvfb.log 2>&1 &
-/srv/linky_clicky/run_behats/run_behats.sh
+cd /srv/linky_clicky/sites/probo
+timeout 10m /srv/linky_clicky/bin/behat -vvv -p default -s all features
