@@ -61,9 +61,7 @@ cd /var/www/html
 drush si $test_product_profile --account-name=admin --db-url="mysql://root:root@localhost/html"
 
 # Run relevant Behat tests
-drush @probo.html pm-list
 echo "127.0.0.1 html" >> /etc/hosts
 export SHELL=/bin/sh
 xvfb-run --server-args="-screen 0, 1366x768x24" selenium-standalone start > xvfb.log 2>&1 &
-drush @probo.html pm-list
 /srv/linky_clicky/run_behats/run_behats.sh
