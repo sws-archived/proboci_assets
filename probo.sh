@@ -5,9 +5,9 @@
 # 2. To specify the full path, ie. /root/directory, rather than ~/directory.
 
 # Set feature and product specific variables
-test_deployer_product='jumpstart-academic'
 cd /src
 test_feature=$(ls *.info | cut -f1 -d".")
+profile_name=$1
 
 # Configure keys
 chmod 400 /root/.ssh/id_rsa
@@ -21,6 +21,9 @@ source /root/.bash_profile
 mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')";
 mysql -u root -proot -e "CREATE DATABASE html";
 cp /srv/proboci_assets/.my.cnf /root/.my.cnf
+service mysql start
+service mysql reload
+service mysql restart
 
 # Installing node modules
 npm install -g npm >/dev/null
@@ -36,22 +39,22 @@ cp /srv/proboci_assets/behat.yml /srv/linky_clicky/sites/probo/behat.yml
 cp /srv/proboci_assets/behat.local.yml /srv/linky_clicky/sites/probo/behat.local.yml
 cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature /srv/linky_clicky/sites/probo/features/.
 
-# Downloading and running Jumpstart Deployer
-git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer
-cd /srv/stanford-jumpstart-deployer
-drush make development/product/$test_deployer_product/$test_deployer_product.make /var/www/html
+# Downloading make files for self-service or Jumpstart site based on user input
+if [ -z "$profile_name" || "$profile_name" == "stanford" ]; then
+  git clone https://github.com/SU-SWS/Stanford-Drupal-Profile.git /srv/Stanford-Default-Profile
+  cd /srv/Stanford-Default-Profile
+  drush make make/dept.make /var/www/html
+else
+  git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer
+  cd /srv/stanford-jumpstart-deployer
+  drush make production/product/$test_deployer_product/$test_deployer_product.make /var/www/html
+fi
+
 cp /srv/proboci_assets/.htaccess /var/www/html/.htaccess
 mkdir -p /var/www/html/sites/default/files/styles
 chmod -R 777 /var/www/html/sites/default/files
-
-# Build site
-cd /var/www/html/profiles
-test_product_profile=$(echo stanford_sites_jumpstart_*)
-service mysql start
-service mysql reload
-service mysql restart
 cd /var/www/html
-drush si $test_product_profile --account-name=admin --db-url="mysql://root:root@localhost/html"
+drush si $profile_name --account-name=admin --db-url="mysql://root:root@localhost/html"
 
 # Run relevant Behat tests
 echo "127.0.0.1 html" >> /etc/hosts
