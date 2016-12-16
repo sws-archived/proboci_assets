@@ -7,7 +7,7 @@
 # Set feature and product specific variables
 cd /src
 test_feature=$(ls *.info | cut -f1 -d".")
-profile_name=$1
+product_name=$1
 
 # Configure keys
 chmod 400 /root/.ssh/id_rsa
@@ -40,16 +40,19 @@ cp /srv/proboci_assets/behat.local.yml /srv/linky_clicky/sites/probo/behat.local
 cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature /srv/linky_clicky/sites/probo/features/.
 
 # Downloading make files for self-service or Jumpstart site based on user input
-if [ -z "$profile_name" ] || [ "$profile_name" == "stanford" ]; then
+if [ -z "$product_name" ] || [ "$product_name" == "stanford" ]; then
   # Re-assign variable for default profile when empty
   profile_name="stanford"
   git clone https://github.com/SU-SWS/Stanford-Drupal-Profile.git /srv/Stanford-Default-Profile
   cd /srv/Stanford-Default-Profile
   drush make make/dept.make /var/www/html
+  profile_name="stanford"
 else
   git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer
   cd /srv/stanford-jumpstart-deployer
-  drush make production/product/$profile_name/$profile_name.make /var/www/html
+  drush make production/product/$product_name/$product_name.make /var/www/html
+  product_name_formatted=$(echo "$product_name" | tr - _)
+  profile_name="stanford_sites_$product_name_formatted"
 fi
 
 cp /srv/proboci_assets/.htaccess /var/www/html/.htaccess
