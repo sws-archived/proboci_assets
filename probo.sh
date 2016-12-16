@@ -49,7 +49,7 @@ if [ -z "$profile_name" ] || [ "$profile_name" == "stanford" ]; then
 else
   git clone git@github.com:SU-SWS/stanford-jumpstart-deployer.git /srv/stanford-jumpstart-deployer
   cd /srv/stanford-jumpstart-deployer
-  drush make production/product/$test_deployer_product/$test_deployer_product.make /var/www/html
+  drush make production/product/$profile_name/$profile_name.make /var/www/html
 fi
 
 cp /srv/proboci_assets/.htaccess /var/www/html/.htaccess
