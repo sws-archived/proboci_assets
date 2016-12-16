@@ -40,7 +40,7 @@ cp /srv/proboci_assets/behat.local.yml /srv/linky_clicky/sites/probo/behat.local
 cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.feature /srv/linky_clicky/sites/probo/features/.
 
 # Downloading make files for self-service or Jumpstart site based on user input
-if [ -z "$profile_name" || "$profile_name" == "stanford" ]; then
+if [ -z "$profile_name" ] || [ "$profile_name" == "stanford" ]; then
   git clone https://github.com/SU-SWS/Stanford-Drupal-Profile.git /srv/Stanford-Default-Profile
   cd /srv/Stanford-Default-Profile
   drush make make/dept.make /var/www/html
