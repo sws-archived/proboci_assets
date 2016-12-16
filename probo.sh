@@ -41,6 +41,8 @@ cp /srv/linky_clicky/includes/features/SU-SWS/$test_feature/$test_feature.featur
 
 # Downloading make files for self-service or Jumpstart site based on user input
 if [ -z "$profile_name" ] || [ "$profile_name" == "stanford" ]; then
+  # Re-assign variable for default profile when empty
+  profile_name="stanford"
   git clone https://github.com/SU-SWS/Stanford-Drupal-Profile.git /srv/Stanford-Default-Profile
   cd /srv/Stanford-Default-Profile
   drush make make/dept.make /var/www/html
