@@ -41,6 +41,8 @@ Assets
 
 **behat.yml:** As wish behat.local.yml, Behat expects this file to be present and contain information about the default site url and drush alias it should use.
 
+**probo.sh:** This file contains the script we use to build and test sites.
+
 Troubleshooting
 ---
 
