@@ -1,6 +1,6 @@
 ProboCI Assets x.x-x.x xxxx-xx-xx
 --------------------------------------
 
-1.x                                2017-01-04
+7.x-1.0                            2017-01-04
 ---------------------------------------------
 - Updated documentation with installation instructions.
