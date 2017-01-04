@@ -9,6 +9,8 @@ Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.c
 
 ProboCI offers a number of different LAMP and Drupal-specific plugins.  We chose not to use these plugins, and instead keep our .probo.yaml file as minimal as possible, so that we can more easily maintain and update this code across a number of different repositories.
 
+Sites are built and tests are run by probo.sh.  This script assumes that the Behat test name will match the module name it tests.  For example, if the module is stanford_bean_types, then probo.sh assumes the Behat test name will be stanford_bean_types.feature.  Our full suite of tests can be found in the [Linky Click](https://github.com/SU-SWS/linky_clicky) repository.
+
 Installation
 ---
 
@@ -40,6 +42,8 @@ Assets
 **behat.local.yml:** Behat uses information stored in behat.local.yml for the site url and drush alias.
 
 **behat.yml:** As wish behat.local.yml, Behat expects this file to be present and contain information about the default site url and drush alias it should use.
+
+**probo.sh:** This file contains the script we use to build and test sites.
 
 Troubleshooting
 ---
